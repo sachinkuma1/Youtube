@@ -6,7 +6,7 @@ const isopen=useSelector((store)=>store.app.ismenuopen);
 if(!isopen) return null;
 
     return   (
-        <div className="bg-slate-100 w-3/12  flex flex-col gap-6 p-4">
+        <div className="w-48 flex flex-col gap-6 p-4">
       
         <ul className="flex flex-col gap-3">
         <li>Home</li>

@@ -1,6 +1,11 @@
+import Button from "./Button";
 const Buttonlist=()=>{
+    const buttonlist=["All", "National Institue Of Technology", "computer programming", "Music", "Mixes", "Physics",  "Tamil cinema"];
+
     return (
-        <h1>Buttonlist</h1>
+        
+        buttonlist.map((btn)=>{return <Button name={btn}/>})
+       
     )
 }
 
