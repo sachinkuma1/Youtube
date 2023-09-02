@@ -1,6 +1,7 @@
 import { useEffect , useState} from "react";
 import { Youtube_api } from "../config";
 import Videocard from "./Videocard";
+import {Link} from "react-router-dom";
 
 const Videocontainer=()=>{
    
@@ -20,7 +21,13 @@ const Videocontainer=()=>{
         <div className=" grid grid-cols-3 gap-x-1 gap-y-7">
        
       {
-        video.map((arrelement)=><Videocard info={arrelement} key={arrelement.id}  />)
+        video.map((arrelement)=>
+        
+        <Link to ={"watch?v="+arrelement.id}>
+        <Videocard info={arrelement} key={arrelement.id}  />
+        </Link>
+        
+        )
       }
     
     </div>
