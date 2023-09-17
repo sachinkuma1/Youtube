@@ -6,13 +6,14 @@ import { Youtube_suggestion_api } from "../config";
 
 const Head=()=>{
     const [searchquery, setSearchquery]=useState("");
+    const [suggestion, setSuggestion]=useState([]);
+    const [showsuggestion, setShowsuggestion]=useState(false);
   
     const dispatch=useDispatch();
     const togglemenuhandler=()=>{
         dispatch(toggleMenu());
     }
 
-    const [suggestion, setSuggestion]=useState([]);
   // making api call
 useEffect(()=>{
   const timer=setTimeout(()=>getSearchSuggestion(), 200);
@@ -52,10 +53,11 @@ const getSearchSuggestion=async()=>{
            <div className="col-span-10">
             <input className="w-8/12 p-2 border border-slate-900 rounded-s-3xl" type="text" 
                 value={searchquery} onChange={(e)=>setSearchquery(e.target.value)}
+                onFocus={()=>setShowsuggestion(true)} onBlur={()=>setShowsuggestion(false)}
             />
             <button className="border border-slate-900 p-2 rounded-e-3xl bg-slate-100">Search</button>
            </div>
-
+            { showsuggestion&&(
            <div className="fixed bg-white  p-3 w-[21rem] rounded-md shadow-sm">
             <ul>
             { suggestion.map(s=><li key={s} className="hover:bg-gray-100">{s}</li>)}
@@ -63,7 +65,7 @@ const getSearchSuggestion=async()=>{
              
             </ul>
          </div>
-
+            )}
          </div>
          
          
